@@ -8,20 +8,20 @@ class MethodList {
   /**
    * @description [将时间转化为`14:25`格式]
    */
-  format_date() {
+  format_date(date=this.date) {
     // 将日期转化
-    const hour = this.date.getHours() < 10 ? '0' + this.date.getHours() : this.date.getHours();
-    const minute = this.date.getMinutes() <10 ? '0' + this.date.getMinutes() : this.date.getMinutes();
+    const hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    const minute = date.getMinutes() <10 ? '0' + date.getMinutes() : date.getMinutes();
     const time = hour + ':' + minute;
     return time;
   }
   /**
    * @description [将日期转化为`04/19周五`格式]
    */
-  format_time() {
-    const month = this.date.getMonth() < 10 ? '0' + this.date.getMonth() : this.date.getMonth();
-    const sun = this.date.getDate() < 10 ? '0' + this.date.getDate() : this.date.getDate();
-    const day = this.days[this.date.getDay()];
+  format_time(date=this.date) {
+    const month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();
+    const sun = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    const day = this.days[date.getDay()];
     const time = month + '/' + sun +' '+ day
     return time;
   }
@@ -98,9 +98,9 @@ window.onload = () => {
   methodlist.setMinute(minute_group);
   
   setInterval(() => {
-    const date = methodlist.format_date(); 
+    const date = methodlist.format_date(new Date()); 
     dom_date.innerText = date;
-    dom_date.innerText = date;
+    const time = methodlist.format_time(new Date()); 
     dom_week.innerText = time;
     deg -= 6;
     seconds_group.style.transform = `rotate(${deg}deg)`;
