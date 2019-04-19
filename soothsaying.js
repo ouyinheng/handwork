@@ -100,6 +100,8 @@ window.onload = () => {
   setInterval(() => {
     const date = methodlist.format_date(); 
     dom_date.innerText = date;
+    dom_date.innerText = date;
+    dom_week.innerText = time;
     deg -= 6;
     seconds_group.style.transform = `rotate(${deg}deg)`;
     if(new Date().getSeconds()>=59) {
