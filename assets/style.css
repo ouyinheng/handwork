@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.list {
+  width: 100%;
+  display: flex;
+}
+.card {
+  width: 30%;
+  background: var(--background-secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: -5px 10px 60px -13px rgba(0,0,0,.2);
+  height: 270px;
+}
