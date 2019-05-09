@@ -9,11 +9,22 @@
 </head>
 <body>
   <div class="list">
-    <div class="card">
-      <div class="card-body">
-        This is some text within a card body.
-      </div>
-    </div>
+    
   </div>
 </body>
+<script src="./list.js"></script>
+<script>
+  const lists = document.getElementsByClassName('list')[0];
+  for(let i=0;i<list.length;i++) {
+    const ele_a = `<div class="card-body">
+        ${list[i].name}
+      </div>`
+    const a = document.createElement('a');
+    a.setAttribute('class', 'card');
+    a.setAttribute('title', list[i].alt);
+    a.setAttribute('href', list[i].link+'/index.html');
+    a.innerHTML = ele_a;
+    lists.appendChild(a)
+  }
+</script>
 </html>
