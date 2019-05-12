@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节流</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        div {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        button {
+            display: inline-block;
+            outline: none;
+            border: none;
+            padding: 10px 20px;
+            width: 120px;
+            background-color: #F56C6C;
+            color: white;
+        }
+
+        button:active {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p style="margin: 15px 10px;">num:<span style="font-size: 16px;font-weight: bold">0</span></p>
+        <button>时间戳</button>
+        <button>定时器</button>
+    </div>
+</body>
+<script>
+    const span = document.getElementsByTagName('span')[0];
+    const button = document.getElementsByTagName('button')[0];
+    const btn = document.getElementsByTagName('button')[1];
+    let num = 0;
+
+    function throttle(func, wait) {
+        var previous = 0;
+        return function () {
+            let now = Date.now();
+            let context = this;
+            let args = arguments;
+            if (now - previous > wait) {
+                func.apply(context, args);
+                previous = now;
+            }
+        }
+    }
+
+    function throttles(func, wait) {
+        let timeout;
+        return function () {
+            let context = this;
+            let args = arguments;
+            if (!timeout) {
+                timeout = setTimeout(() => {
+                    timeout = null;
+                    func.apply(context, args)
+                }, wait)
+            }
+
+        }
+    }
+    button.addEventListener('click', throttle(() => {
+        num++;
+        span.innerHTML = num;
+    }, 1000))
+    btn.addEventListener('click', throttles(() => {
+        num--;
+        span.innerHTML = num;
+    }, 1000))
+</script>
+
+</html>
