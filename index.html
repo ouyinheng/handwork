@@ -5,26 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./src/assets/css/style.css">
 </head>
 <body>
+  <header>
+  </header>
   <div class="list">
-    
   </div>
 </body>
 <script src="./list.js"></script>
 <script>
   const lists = document.getElementsByClassName('list')[0];
   for(let i=0;i<list.length;i++) {
-    const ele_a = `<div class="card-body">
-        ${list[i].name}
-      </div>`
-    const a = document.createElement('a');
-    a.setAttribute('class', 'card');
-    a.setAttribute('title', list[i].alt);
-    a.setAttribute('href', list[i].link+'/index.html');
-    a.innerHTML = ele_a;
-    lists.appendChild(a)
+    const ele_a = `
+      
+        <div class="content ${i%2==0?'left':'right'}">
+          <div class="content_1">${list[i].name}</div>
+          <div class="content_2">
+            <div></div>
+            <a class="goto href="${list[i].link}/index.html" title="${list[i].alt}">点击查看</a>
+          </div>
+        </div>
+      <div class="icon">
+        <img src="./src/assets/img/bg_wsc.png" alt="">
+      </div>
+    `
+    const div = document.createElement('div');
+    div.setAttribute('class', 'item');
+    div.innerHTML = ele_a;
+    lists.appendChild(div)
   }
 </script>
 </html>

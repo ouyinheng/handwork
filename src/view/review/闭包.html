@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      display: flex;
+      /* flex-direction: row; */
+    }
+    li {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid gainsboro;
+      list-style: none;
+    }
+    li:hover, li:hover~li {
+      background-color: gainsboro
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+    function Fun(name,age) {
+      this.name = name;
+      this.age = age;
+      this.sayName = function() {
+        console.log(this.name)
+      }
+    }
+    Fun.prototype.sayAge = function() {
+      console.log(this.age)
+    }
+    let fun = new Fun('张三', 21);
+    fun.sayName();
+    fun.sayAge();
+    let arr = [1,2,[4,5,[3,6,[7]]],[10]]
+    function down(arr) {
+      return arr.toString().split(',')
+    }
+    console.log(down(arr))
+    console.log([1,2,3,4,5].reduce(function(a,b){
+      return a+b;
+    }))
+    Array.prototype.myReduce = (e) => {
+      console.log(e)
+    }
+    [1,2,3].myReduce();
+  </script>
+</body>
+</html>

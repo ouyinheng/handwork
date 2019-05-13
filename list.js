@@ -2,14 +2,14 @@ const list = [
   {
     "name": "我的简历",
     "alt": "resume",
-    "link": "./project/resume"
+    "link": "./src/view/resume"
   }, {
     "name": "时间轮盘",
     "alt": "soothsaying",
-    "link": "./project/soothsaying"
+    "link": "./src/view/soothsaying"
   }, {
     "name": "git",
     "alt": "git",
-    "link": "./project/git"
+    "link": "./src/view/git"
   }
 ]
