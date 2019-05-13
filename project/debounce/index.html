@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>防抖</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    html,body {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    div {
+      width: 100%;
+      margin: 0 auto;
+      text-align: center
+    }
+    button {
+      display: inline-block;
+      outline: none;
+      border: none;
+      padding: 10px 20px;
+      width: 120px;
+      background-color: #F56C6C;
+      color: white;
+    }
+    button:active {
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div>
+      <p style="margin: 15px 10px;">num:<span style="font-size: 16px;font-weight: bold">0</span></p>
+      <button>立即执行</button>
+      <button>非立即执行</button>
+  </div>
+</body>
+<script>
+  const span = document.getElementsByTagName('span')[0];
+  const button = document.getElementsByTagName('button')[0];
+  const btn = document.getElementsByTagName('button')[1];
+  let num = 0;
+  function debounce(func,wait) {
+    let timeout;
+    return function () {
+        let context = this;
+        let args = arguments;
+
+        if (timeout) clearTimeout(timeout);
+
+        let callNow = !timeout;
+        timeout = setTimeout(() => {
+            timeout = null;
+        }, wait)
+
+        if (callNow) func.apply(context, args)
+    }
+  }
+  function debounces(func, wait) {
+    let timeout;
+    return function () {
+        let context = this;
+        let args = arguments;
+
+        if (timeout) clearTimeout(timeout);
+        
+        timeout = setTimeout(() => {
+            func.apply(context, args)
+        }, wait);
+    }
+}
+  button.addEventListener('click', debounce(() => {
+    num++;
+    span.innerHTML = num;
+  },1000))
+  btn.addEventListener('click', debounces(() => {
+    num--;
+    span.innerHTML = num;
+  }, 1000))
+</script>
+</html>
