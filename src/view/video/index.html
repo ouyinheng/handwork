@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1032438_nqtlv9frix.css">
+</head>
+<body>
+  <div class="video-group">
+    <video class="video" src="https://baobab.kaiyanapp.com/api/v1/playUrl?vid=159855&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss&ptl=true" poster="http://img.kaiyanapp.com/8cce3421c12dcb1d4672c793a571ce9b.png?imageMogr2/quality/60/format/jpg"></video>
+    <div class="iconfont icon-play play"></div>
+  </div>
+</body>
+<script>
+  window.onload = function() {
+    const video = document.getElementsByClassName('video')[0];
+    const play = document.getElementsByClassName('play')[0];
+    play.addEventListener('click', function(e) {
+      console.log('asdf')
+      video.play();
+    })
+  }
+</script>
+</html>

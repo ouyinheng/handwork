@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_701614_ghtyvbi060w.css">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    html,body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: gainsboro;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
+    }
+    .container>div{
+      width: 100%;
+      height: 100%;
+    }
+    .transition {
+      transition: all .3s;
+    }
+    .btn {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div style="background-color: lightblue"></div>
+    <div style="background-color: lightcoral"></div>
+    <div style="background-color: lightcyan"></div>
+    <div style="background-color: lightgoldenrodyellow"></div>
+    <div style="background-color: lightsalmon"></div>
+  </div>
+  <span class="btn iconfont icon-jiazaigengduoicon" onclick="next()"></span>
+</body>
+<script>
+  let num = 0;
+  let t_y = 0;
+  let translate = {
+    y1:0,
+    y2:0
+  }
+  const div = document.getElementsByClassName('container')[0];
+  div.addEventListener('touchstart', function(e){
+    return;
+    if(t_y>0)return;
+    translate.y1 = e.touches[0].pageY;
+    div.classList.remove('transition')
+    div.addEventListener('touchmove',onTouchMove);
+    div.addEventListener('touchend',onTouchEnd);
+  })
+  function onTouchMove(e) {
+    const touches = e.touches[0];
+    translate.y2 = touches.pageY;
+    t_y = translate.y2-translate.y1+t_y
+    div.style.transform = `translate(0,${t_y}px)`
+    translate.y1 = translate.y2;
+  }
+  function onTouchEnd(e) {
+    console.log(t_y,document.body.clientHeight)
+    if(t_y>0) {
+      t_y = 0;
+    } else if(Math.abs(t_y)>document.body.clientHeight*4) {
+      t_y = -document.body.clientHeight*4;
+    }
+    div.style.transform = `translate(0,${t_y}px)`
+    div.classList.add('transition')
+    div.removeEventListener('touchmove',onTouchMove);
+  }
+  function next() {
+    if(num>=4) {
+      num = 0;
+    }
+    div.classList.add('transition');
+    num++;
+    t_y = -num*document.body.clientHeight
+    div.style.transform = `translate(0,${t_y}px)`
+    // div.classList.remove('transition');
+  }
+</script>
+</html>
