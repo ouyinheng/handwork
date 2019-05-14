@@ -19,5 +19,9 @@ const list = [
     "name": "节流",
     "alt": "throttle",
     "link": "./src/view/debounce/throttle.html"
+  }, {
+    "name": "水波纹按钮",
+    "alt": "ripple",
+    "link": "./src/view/ripple/index.html"
   }
 ]

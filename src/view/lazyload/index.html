@@ -5,12 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>lazyload</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    img {
+      width: 300px;
+      background-color: gainsboro;
+      display: inline-block;
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
 </body>
 <script>
   const srcList = [
-    
+    "http://b-ssl.duitang.com/uploads/item/201801/21/20180121144048_xdsng.thumb.700_0.jpg",
+    "http://b-ssl.duitang.com/uploads/item/201710/02/20171002115624_vYmNs.jpeg",
+    "http://b-ssl.duitang.com/uploads/item/201801/21/20180121145029_vdnqa.jpg",
+    "http://b-ssl.duitang.com/uploads/item/201901/13/20190113111505_uremo.jpg",
+    "http://b-ssl.duitang.com/uploads/item/201805/04/20180504225211_tSV8i.jpeg",
+    "http://img2.utuku.china.com/640x0/news/20170429/3fe36531-013e-45ff-a2ed-1839db753ee7.jpg",
+    "http://hbimg.b0.upaiyun.com/b91157a1e238b64422564548829bd00de8a87b82262d43-trXjtz_fw658",
+    "http://b-ssl.duitang.com/uploads/item/201611/17/20161117211254_sXTBE.jpeg",
+    "http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20181013/7f2c27fd14f94d7db664c6c24c97967b.jpeg",
+    "http://pics6.baidu.com/feed/9f510fb30f2442a70ffbeab0b779274fd01302e8.jpeg?token=d33ffb95851a0bac45a767a5af640951&s=748B9757E4036F557EAE4EA80300A00E",
+    "http://c.hiphotos.baidu.com/zhidao/pic/item/bd315c6034a85edf07bec36a42540923dd54754c.jpg",
+    "http://b-ssl.duitang.com/uploads/item/201509/23/20150923223845_ijMBz.jpeg",
+    "http://b-ssl.duitang.com/uploads/item/201511/03/20151103220212_UxeKr.jpeg",
+    "http://b-ssl.duitang.com/uploads/item/201707/23/20170723093323_2CkYM.jpeg",
+    "http://b-ssl.duitang.com/uploads/item/201809/01/20180901221745_TvHVx.jpeg",
+    "http://b-ssl.duitang.com/uploads/item/201807/30/20180730165822_R4VFC.thumb.700_0.jpeg",
+    "http://www.yoka.com/dna/pics/ba17aeb3/1/d3d391a3e95ae357ca1.jpg",
+    "http://hbimg.b0.upaiyun.com/d7680f74e55bfe4a2d0bb958d39d140c26dd5374298d4-2X4Hzv_fw658",
+    "http://hbimg.b0.upaiyun.com/60d80c419a6201c3464e289e8f5db513e1c651ef2b6de-SZDZvK_fw658",
+    "http://pic.rmb.bdstatic.com/e33ec60e3e3d8d2826e5a8b9104e3ba7.jpeg@c_1,w_1001,h_1441,x_0,y_0",
+    "http://b-ssl.duitang.com/uploads/item/201710/28/20171028192525_uhGdw.jpeg",
+    "http://p2.ifengimg.com/cmpp/2017/02/21/20/4ce5c8c4-4819-4985-80ea-16bd1fb9f370_size14_w400_h436.jpg",
+    "http://hbimg.b0.upaiyun.com/f02a66889ab5d68d431cfb9dcdcb5da8ac7e50c17cbbb-4nlKF8_fw658",
+    "http://b-ssl.duitang.com/uploads/item/201704/12/20170412211122_rzjcK.jpeg",
+    "http://b-ssl.duitang.com/uploads/item/201805/15/20180515230122_BRMSQ.jpeg",
+    "http://b-ssl.duitang.com/uploads/item/201710/01/20171001140151_trhQ3.thumb.700_0.jpeg",
+    "http://n.sinaimg.cn/ent/transform/774/w630h944/20190410/8wmV-hvntnkq3752280.jpg",
+    "http://hbimg.b0.upaiyun.com/8333f972e10b41583855904c3db267a9bcaf77f0292c50-wgyYAT_fw658",
+    "http://b-ssl.duitang.com/uploads/item/201510/05/20151005004506_K2iHv.jpeg"
   ]
+  const body = document.body;
+  let num = 0;
+  for(let i=0;i<1000;i++) {
+    const ele_img = `
+      <img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike933%2C5%2C5%2C933%2C330/sign=dcc71fbbe024b899ca31716a0f6f76f0/0b55b319ebc4b745b75682adc6fc1e178b82154e.jpg" alt="迪丽热巴" title="迪丽热巴" data-src="${srcList[num]}" lazyload="true">
+    `;
+    const div = document.createElement('div');
+    div.innerHTML = ele_img;
+    body.appendChild(div)
+    num++;
+    if(num>=srcList.length) {
+      num=0;
+    }
+  }
+  // 节流
+  function throttle(func, wait) {
+    let previous = 0;
+    return function () {
+        let now = Date.now();
+        let context = this;
+        let args = arguments;
+        if (now - previous > wait) {
+            func.apply(context, args);
+            previous = now;
+        }
+    }
+  }
+  // 获取可视区域高度
+  const viewHeight = document.documentElement.clientHeight;
+  var eles=document.querySelectorAll('img[data-src][lazyload]');
+  function lazyload() {
+    let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    for(let i=0;i<eles.length;i++) {
+    console.log(screenTop,eles[i].offsetTop,viewHeight)
+      if(eles[i].offsetTop < viewHeight+scrollTop) {
+        const src = eles[i].getAttribute('data-src')
+        if(src) {
+          eles[i].onload = function() {
+
+          }
+          eles[i].setAttribute('src', src);
+          eles[i].removeAttribute('data-src');
+        }
+      }
+    }
+  }
+  window.addEventListener('scroll', throttle(lazyload,1000))
 </script>
 </html>
