@@ -416,10 +416,104 @@
         opacity: 1;
       }
     }
+
+    /* 第十一种 */
+    .eleven {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      position: relative;
+      transform-origin: top;
+    }
+
+    .eleven .circle {
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .eleven .circle:nth-of-type(1) {
+      width: 60px;
+      height: 60px;
+      border: 3px solid transparent;
+      border-top-color: #ff4545;
+      border-left-color: #ff4545;
+      margin-left: -30px;
+      margin-top: -30px;
+      animation: eleven 1s infinite linear;
+    }
+
+    .eleven .circle:nth-of-type(2) {
+      width: 30px;
+      height: 30px;
+      border: 3px solid transparent;
+      border-bottom-color: #ff4545;
+      border-right-color: #ff4545;
+      margin-left: -15px;
+      margin-top: -15px;
+      animation: eleven 1s infinite linear;
+    }
+
+    .eleven .circle:nth-of-type(3) {
+      width: 10px;
+      height: 10px;
+      border: 3px solid transparent;
+      border-bottom-color: #ff4545;
+      border-left-color: #ff4545;
+      margin-left: -5px;
+      margin-top: -5px;
+      animation: eleven 1s infinite linear reverse;
+    }
+
+    @keyframes eleven {
+      from {
+        transform: rotate(0)
+      }
+
+      to {
+        transform: rotate(360deg)
+      }
+    }
+    /* 第十二种 */
+    .twelve {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .twelve .circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ff4545;
+    }
+    .twelve .circle:nth-of-type(1) {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ff4545;
+      transform: rotate3d(150deg) translate(-500px);
+    }
+    img {
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      width: 50px;
+      height: 50px;
+      box-shadow: 1px 1px 10px 1px #ffffff;
+      border-radius: 50%;
+    }
   </style>
 </head>
 
 <body>
+  <a href="https://github.com/ouyinheng/handwork/blob/master/src/view/loading/index.html" target="_black"><img src="./github.png" alt=""></a>
   <div id="loading">
     <div class="loading">
       <div class="one">
@@ -484,6 +578,19 @@
         <div class="circle"></div>
       </div>
     </div>
+    <div class="loading">
+      <div class="eleven">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+    <!-- <div class="loading">
+      <div class="twelve">
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div> -->
   </div>
 </body>
 
