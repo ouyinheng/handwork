@@ -23,5 +23,9 @@ const list = [
     "name": "水波纹按钮",
     "alt": "ripple",
     "link": "./src/view/ripple/index.html"
+  }, {
+    "name": "Loading",
+    "alt": "Loading",
+    "link": "./src/view/loading/index.html"
   }
 ]

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>loading</title>
+  <style>
+    html,
+    body {
+      background-color: black;
+      padding: 0;
+      margin: 0;
+    }
+
+    #loading {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .loading {
+      width: 200px;
+      height: 100px;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .one .rect {
+      display: inline-block;
+      width: 6px;
+      height: 40px;
+      background-color: #ff4545;
+      margin-right: 5px;
+      animation: rectrun .8s infinite ease-in-out;
+    }
+
+    .one .rect:nth-of-type(2) {
+      animation-delay: .1s;
+    }
+
+    .one .rect:nth-of-type(3) {
+      animation-delay: .2s;
+    }
+
+    .one .rect:nth-of-type(4) {
+      animation-delay: .3s;
+    }
+
+    .one .rect:nth-of-type(5) {
+      animation-delay: .4s;
+    }
+
+    .one .rect:nth-of-type(6) {
+      animation-delay: .5s;
+    }
+
+    @keyframes rectrun {
+      0% {
+        transform: scaleY(1)
+      }
+
+      50% {
+        transform: scaleY(.5)
+      }
+
+      100% {
+        transform: scaleY(1)
+      }
+    }
+
+    /* 第二种 */
+    .two {
+      position: relative;
+      width: 100%;
+      width: 100%;
+    }
+
+    .two .big {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #ff4545;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: .6;
+      transform: translate(-50%, -50%);
+      animation: changescale1 1s infinite ease-in-out;
+    }
+
+    .two .small {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ff4545;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: changescale2 1s infinite ease-in-out;
+    }
+
+    @keyframes changescale1 {
+      0% {
+        width: 70px;
+        height: 70px;
+      }
+
+      50% {
+        width: 40px;
+        height: 40px;
+      }
+
+      100% {
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    @keyframes changescale2 {
+      0% {
+        width: 10px;
+        height: 10px;
+      }
+
+      50% {
+        width: 30px;
+        height: 30px;
+      }
+
+      100% {
+        width: 1px;
+        height: 1px;
+      }
+    }
+    /* 第三种 */
+    .three {
+      display: flex;
+      justify-content: space-around;
+    }
+    .three .circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ff4545;
+      margin-right: 5px;
+      animation: changeCircle 1s infinite ease-in-out;
+    }
+    .three .circle:nth-of-type(2) {
+      animation-delay: .2s;
+    }
+    .three .circle:nth-of-type(3) {
+      animation-delay: .4s;
+    }
+    @keyframes changeCircle {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    /* 第四种 */
+    .four {
+
+    }
+    .four .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #ff4545;
+      opacity: 1;
+      animation: changeOp 1s infinite ease-in-out;
+    }
+    @keyframes changeOp {
+      0% {
+        transform: scale(.1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.8);
+        opacity: .2;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading">
+    <div class="loading">
+      <div class="one">
+        <span class="rect"></span>
+        <span class="rect"></span>
+        <span class="rect"></span>
+        <span class="rect"></span>
+        <span class="rect"></span>
+        <span class="rect"></span>
+      </div>
+    </div>
+    <div class="loading">
+      <div class="two">
+        <div class="big"></div>
+        <div class="small"></div>
+      </div>
+    </div>
+    <div class="loading">
+      <div class="three">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+    <div class="loading">
+      <div class="four">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
