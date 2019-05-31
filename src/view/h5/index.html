@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,38 +12,63 @@
       padding: 0;
       margin: 0;
     }
-    html,body {
+
+    html,
+    body {
       width: 100%;
       height: 100%;
       overflow: hidden;
       background-color: gainsboro;
     }
+
     .container {
       width: 100%;
       height: 100%;
     }
-    .container>div{
+
+    .container>div {
       width: 100%;
       height: 100%;
     }
+
     .transition {
       transition: all .3s;
     }
+
     .btn {
       position: fixed;
       bottom: 10px;
       left: 50%;
+      transform: translate(-50%, 0);
       font-size: 20px;
+      border-radius: 50%;
+      color: white
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <div style="background-color: lightblue"></div>
-    <div style="background-color: lightcoral"></div>
-    <div style="background-color: lightcyan"></div>
-    <div style="background-color: lightgoldenrodyellow"></div>
-    <div style="background-color: lightsalmon"></div>
+    <div style="background-color: lightblue">
+      <img src="https://hbimg.huabanimg.com/714525658e416e0848c651f241570eb391a888ee3cc80-qFtPvH_fw658" alt="">
+    </div>
+    <div style="background-color: lightcoral">
+      <img src="https://hbimg.huabanimg.com/3575f20d535ba1ca7d794066a27dfdff7ed4515c1ebec-xaF8Li_fw658" alt="">
+    </div>
+    <div style="background-color: lightcyan">
+      <img src="https://hbimg.huabanimg.com/5632e6050cd3bbd3df3121ab79f0d46635853b2c2b2a7-l6h7P8_fw658" alt="">
+    </div>
+    <div style="background-color: lightgoldenrodyellow">
+      <img src="https://hbimg.huabanimg.com/cd7472659acf0679e304b396f8504e583b8b650037878-CfgSGF_fw658" alt="">
+    </div>
+    <div style="background-color: lightsalmon">
+      <img src="https://hbimg.huabanimg.com/ac099de422eb35d6c0462c965cf90986de97322760e54-Tzg5sA_fw658" alt="">
+    </div>
   </div>
   <span class="btn iconfont icon-jiazaigengduoicon" onclick="next()"></span>
 </body>
@@ -50,45 +76,49 @@
   let num = 0;
   let t_y = 0;
   let translate = {
-    y1:0,
-    y2:0
+    y1: 0,
+    y2: 0
   }
   const div = document.getElementsByClassName('container')[0];
-  div.addEventListener('touchstart', function(e){
+  div.addEventListener('touchstart', function (e) {
     return;
-    if(t_y>0)return;
+    if (t_y > 0) return;
     translate.y1 = e.touches[0].pageY;
     div.classList.remove('transition')
-    div.addEventListener('touchmove',onTouchMove);
-    div.addEventListener('touchend',onTouchEnd);
+    div.addEventListener('touchmove', onTouchMove);
+    div.addEventListener('touchend', onTouchEnd);
   })
+
   function onTouchMove(e) {
     const touches = e.touches[0];
     translate.y2 = touches.pageY;
-    t_y = translate.y2-translate.y1+t_y
+    t_y = translate.y2 - translate.y1 + t_y
     div.style.transform = `translate(0,${t_y}px)`
     translate.y1 = translate.y2;
   }
+
   function onTouchEnd(e) {
-    console.log(t_y,document.body.clientHeight)
-    if(t_y>0) {
+    console.log(t_y, document.body.clientHeight)
+    if (t_y > 0) {
       t_y = 0;
-    } else if(Math.abs(t_y)>document.body.clientHeight*4) {
-      t_y = -document.body.clientHeight*4;
+    } else if (Math.abs(t_y) > document.body.clientHeight * 4) {
+      t_y = -document.body.clientHeight * 4;
     }
     div.style.transform = `translate(0,${t_y}px)`
     div.classList.add('transition')
-    div.removeEventListener('touchmove',onTouchMove);
+    div.removeEventListener('touchmove', onTouchMove);
   }
+
   function next() {
-    if(num>=4) {
+    if (num >= 4) {
       num = 0;
     }
     div.classList.add('transition');
     num++;
-    t_y = -num*document.body.clientHeight
+    t_y = -num * document.body.clientHeight
     div.style.transform = `translate(0,${t_y}px)`
     // div.classList.remove('transition');
   }
 </script>
+
 </html>

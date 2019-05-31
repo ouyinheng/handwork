@@ -27,5 +27,9 @@ const list = [
     "name": "Loading",
     "alt": "Loading",
     "link": "./src/view/loading/index.html"
+  }, {
+    "name": "h5",
+    "alt": "h5",
+    "link": "./src/view/h5/index.html"
   }
 ]
