@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>input</title>
+  <style>
+    html,
+    body {
+      background-color: #090821;
+      padding: 0;
+      margin: 0;
+    }
+
+    #input {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .input {
+      width: 200px;
+      height: 100px;
+      background-color: #090821;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .one {
+      width: 200px;
+      position: relative;
+    }
+    .one input {
+      display: block;
+      background-color: transparent;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid gainsboro;
+      outline: none;
+      color: white;
+      padding: 5px;
+    }
+    .one input+span {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      z-index: 10;
+      display: block;
+      height: 2px;
+      width: 0;
+      background-color: #ff4545;
+      transform: translate(-50%, 50%);
+      transition: all .3s;
+    }
+    .one input:focus+span {
+      width: 220px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="input">
+    <div class="input">
+      <div class="one">
+        <input type="text">
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
