@@ -31,5 +31,9 @@ const list = [
     "name": "h5",
     "alt": "h5",
     "link": "./src/view/h5/index.html"
+  }, {
+    "name": "桌面通知",
+    "alt": "Notification",
+    "link": "./src/view/notiyeme/index.html"
   }
 ]
