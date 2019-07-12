@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>sleep</title>
+</head>
+
+<body>
+  <script>
+    function sleep(wait) {
+      let date = new Date().getTime();
+      console.log('wait...')
+      while ((new Date().getTime()) - date < wait) {
+        continue;
+      }
+    }
+    console.log(1);
+    sleep(3000);
+    console.log(2);
+  </script>
+</body>
+
+</html>

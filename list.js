@@ -1,8 +1,8 @@
 const list = [
   {
-    "name": "我的简历",
+    "name": "模糊搜索关键词高亮",
     "alt": "resume",
-    "link": "./src/view/resume/index.html"
+    "link": "./src/view/模糊搜索关键词高亮/index.html"
   }, {
     "name": "时间轮盘",
     "alt": "soothsaying",

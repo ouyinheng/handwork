@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>模糊搜所关键词高亮</title>
+</head>
+
+<body>
+  <h3></h3>
+  <div class="input">
+    <input type="text" oninput="search(event)" placeholder="输入上海查看所有提示词">
+    <ul class="options"></ul>
+  </div>
+
+  <script>
+    const list = ['上海', '上海市', '上海海昌海洋公园', '上海市徐汇区', '上海自来水来自海上'];
+
+    function setList(value) {
+      const ul = document.querySelector('.options');
+      ul.innerHTML = '';
+      if (!value) {
+        ul.innerHTML = '';
+        return;
+      }
+      list.forEach((item, index) => {
+        if (item.indexOf(value) !== -1) {
+          const li = document.createElement('li');
+          const innerHtml = item.replace(value, `<span style="color:red">${value}</span>`);
+          console.log(innerHtml)
+          li.innerHTML = innerHtml;
+          li.setAttribute('key', index);
+          ul.appendChild(li);
+        }
+      })
+    }
+
+    function search(e) {
+      const value = e.target.value;
+      setList(value)
+    }
+  </script>
+</body>
+
+</html>
